@@ -18,10 +18,15 @@ const Interns = new mongoose.Schema({
     mobile: {
         type: Number,
         required: true,
-        min: 100000000,
-        max: 999999999,
         trim: true,
-        unique: true
+        unique: true,
+        validate: {
+        validator: function(v) {
+        return /^[0-9]{10}$/.test(v);
+         },
+        message: '{VALUE} is not a valid phone number!'
+                      
+        } 
     },
     collegeId: {
         type: ObjectId,

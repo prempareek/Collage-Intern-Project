@@ -11,6 +11,6 @@ const internController = require("../controller/internController")
 
 router.post("/colleges", collegeController.createColleges)
 router.post("/interns", internController.createInterns)
-router.get("/collegeDetails", internController.getDetails)
+router.get("/collegeDetails", collegeController.getDetails)
 
 module.exports = router;
