@@ -15,18 +15,12 @@ const Interns = new mongoose.Schema({
         trim: true,
         unique: true
     },
-    mobile: {
+    mobile:  {
         type: Number,
         required: true,
         trim: true,
         unique: true,
-        validate: {
-        validator: function(v) {
-        return /^[0-9]{10}$/.test(v);
-         },
-        message: '{VALUE} is not a valid phone number!'
-                      
-        } 
+        match:/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9}$/
     },
     collegeId: {
         type: ObjectId,

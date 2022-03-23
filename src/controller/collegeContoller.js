@@ -5,14 +5,14 @@ const createColleges = async function(req, res) {
     try {
         let data = req.body;
         if (Object.keys(data).length < 0) {
-            return res.status(400).send({ status: false, msg: "Please input some data to create" })
+            return res.status(400).send({ status: false, message: "Please input some data to create" })
         }
        
     
         let savedData = await collegeModel.create(data);
         return res.status(201).send({ status: true, data: savedData })
     } catch (error) {
-        return res.status(500).send({ msg: "Error", error: error.message })
+        return res.status(500).send({ message: "Error", error: error.message })
     }
 }
 
@@ -22,12 +22,12 @@ const getDetails = async function(req, res) {
     const query = req.query
     
     if(Object.keys(query).length===0){
-        return res.status(400).send({msg:"plz input some Data for getting Details"})
+        return res.status(400).send({message:"plz input some Data for getting Details"})
     }
 
     const collegeName = query.collegeName
     if(Object.values(collegeName).length===0){
-        return res.status(400).send({msg:"plz input college Name in values"})
+        return res.status(400).send({message:"plz input college Name in values"})
     }
 
 
@@ -56,7 +56,7 @@ const getDetails = async function(req, res) {
 
     
 } catch (error) {
-    res.status(500).send({ status: false, msg: error.message })}
+    res.status(500).send({ status: false, message: error.message })}
 
 }
 
