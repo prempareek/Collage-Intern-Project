@@ -10,7 +10,11 @@ const isValid = function (value) {
 
 const createInterns = async function(req, res) {
     try {
-        let { email, mobile } = req.body;
+        let { mobile } = req.body;
+        let x = req.query
+            if (Object.keys(x).length >0) {
+                return res.status(400).send({ status: false, message: "please don't provide params " })
+            }
 
         let intern = req.body
         if (Object.entries(intern).length === 0) {
@@ -46,6 +50,8 @@ const createInterns = async function(req, res) {
                 res.status(400).send({ status: false, message: "Please eneter valid mobile number" })
                 return
             }
+            
+     
     
 
 

@@ -20,7 +20,7 @@ const Interns = new mongoose.Schema({
         required: true,
         trim: true,
         unique: true,
-        match:/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9}$/
+        match:[/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9}$/,'not valid mobile number']
     },
     collegeId: {
         type: ObjectId,

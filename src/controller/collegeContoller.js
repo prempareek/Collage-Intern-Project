@@ -3,10 +3,31 @@ const internModel = require("../models/internModel")
 
 const createColleges = async function(req, res) {
     try {
+        let x = req.query
+        if (Object.keys(x).length >0) {
+            return res.status(400).send({ status: false, message: "please don't provide params " })
+        }
         let data = req.body;
-        if (Object.keys(data).length < 0) {
+        if (Object.keys(data).length ==0) {
             return res.status(400).send({ status: false, message: "Please input some data to create" })
         }
+        let name =req.body.name
+        if (!name)
+        {
+            return res.status(400).send({ status: false, message: "Please Provide Name" })
+        }
+        let fullName =req.body.fullName
+        if (!fullName)
+        {
+            return res.status(400).send({ status: false, message: "Please input college full Name" })
+        }
+        let logoLink =req.body.logoLink
+        if (!logoLink)
+        {
+            return res.status(400).send({ status: false, message: "Please provide logoLink" })
+        }
+      
+ 
        
     
         let savedData = await collegeModel.create(data);
